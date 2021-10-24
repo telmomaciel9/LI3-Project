@@ -2,7 +2,6 @@
 #include <string.h>
 
 int main (int argc, char* argv[]){
-	printf ("Program name : %s\n", argv[0]);
 	if (argc != 2){
         printf("Wrong nr of arguments");
     }
@@ -16,3 +15,14 @@ int main (int argc, char* argv[]){
         }
     return 0;
 }
+
+
+
+void ex1() {
+    
+}
+
+
+
+
+

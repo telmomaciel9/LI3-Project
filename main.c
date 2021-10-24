@@ -34,6 +34,7 @@ void show_user(struct user k){
     printf("public repos: %d, id: %s\n", k.public_repos, k.id);
 }
 
+
 int main() {
     FILE *data_file = fopen("users100.csv","r");
     char buffer[200];
