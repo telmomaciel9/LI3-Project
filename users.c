@@ -1,38 +1,13 @@
 
+#include <stdio.h>
 
-int ex1() {
-    FILE *data_file = fopen("users100.csv","r");
-    char buffer[200];
-    int i = 0;
-
-    struct user *users = NULL;
-    if (data_file == NULL) {
-        printf("Error when opening\n");
-        return 1;
-    }
-
-    while(fgets(buffer, 200, data_file)){
-        if (i%10000 == 0) {
-            users = realloc(users,(i+10001)*sizeof(struct user));
-        }
-        users[i] = init_user(buffer);
-        i++;
-    }
-
-    for (i = 0; i < 10000000; i++) {
-        show_user(users[i]);
-    }
-
-    fclose(data_file);
-}
-
-
+#include "users.h"
 
 struct user init_user(char *info) {
     struct user k;
     //k.public_repos = atoi(strsep(&info, ";"));
     //k.id         = strdup(strsep(&info, ";"));
-    sscanf(info, "%d;%m[0-9]",&k.public_repos, k.id );
+    sscanf(info, "%d;%m[0-9]",&k.public_repos,&k.id );
     return k;
 }
 
