@@ -4,49 +4,58 @@
 #include "users.h"
 
 struct user init_user(char *info) {
+    //printf("chegou até aqui");
     struct user k;
     //k.public_repos = atoi(strsep(&info, ";"));
-    //k.id ;
+    int a = sscanf(info,"%m[0-9];%m[^;];%m[a-zA-Z];%m[\\-0-9 :];%d;%m[^;];%d;%m[^;];%d;%d",
+        &k.id,
+        &k.login,
+        &k.type,
+        &k.created_at,
+        &k.followers,
+        &k.followers_list,
+        &k.following,
+        &k.following_list,
+        &k.public_gists,
+        &k.public_repos);
+//314442; mitchellshelton; User;2010-06-25 11:13:20;9;
+//[272939, 1504500, 1031373, 7852646, 11890867, 3768562, 7041191, 6673982, 4955664];9;
+//[518371, 1031373, 1504500, 2364769, 3768562, 4515014, 4955664, 6305433, 7852646];3;27
 
-    //int public_repos;
-    //char *id;
-    //int followers;
-    //char *followers_list;
-    //char *type;
-    //char *following_list;
-    //int public_gists;
-    //char created_at;
-    //int following;
-    //char *login;        = strdup(strsep(&info, ";"));
-
-    sscanf(info, "%d;%m[0-9];%d;%m[a-z][A-Z];%m[a-z][A-Z];%m[a-z][A-Z];%d;%ms;%d;%m[a-z][A-Z]",
-            &k.public_repos,
-            &k.id,
-            &k.followers,
-            &k.followers_list,
-            &k.type,
-            &k.following_list,
-            &k.public_gists,
-            &k.created_at,
-            &k.following,
-            &k.login
-          );
+    if (a == 10) {
+        printf("%d %s %s \n",a, k.id,k.login);
+    }
+    else {
+        printf("deu erro%d %s\n",a, info);
+        k.id = NULL;
+        //convenção de id ser NULL em caso de invalidaçao
+    }
     return k;
-
 }
 
 void show_user(struct user k){
-    printf("pr: %d id: %s fol: %d fl: %s t:%s fll:%s pg:%d ca:%s f: %d l: %s", k.public_repos, k.id, k.followers, k.followers_list, k.type, k.following_list, k.public_gists, k.created_at, k.following, k.login);
+    ////printf("\n");
+    //printf("i: %s l: %s t: %s ca: %s f: %d fl: %s flo:%d fol: %s pg: %d pr: %d", 
+    //        k.id, 
+    //        k.login, 
+    //        k.type, 
+    //        k.created_at, 
+    //        k.followers, 
+    //        k.followers_list, 
+    //        k.following, 
+    //        k.following_list, 
+    //        k.public_gists, 
+    //        k.public_repos);
 }
 
-    //6;23609;2;[5877145, 3076393];User;[];0;2008-09-08 06:37:01;0;lmanolov
-    //int public_repos;
-    //char *id;
-    //int followers;
-    //char *followers_list;
-    //char *type;
-    //char *following_list;
-    //int public_gists;
-    //char *created_at;
-    //int following;
-    //char *login;        = strdup(strsep(&info, ";"));
+//6611157;lorraine94588;User;2014-02-07 01:01:35;0;[];0;[];0;0
+//char *id;
+//char *login;
+//char *type;
+//char *created_at;
+//int followers;
+//char *followers_list;
+//int following;
+//char *following_list;
+//int public_gists;
+//int public_repos;

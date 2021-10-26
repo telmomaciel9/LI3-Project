@@ -1,37 +1,41 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
 #include "users.h"
 
-
-
 void ex1() {
-    printf("exerci1");
-    printf("exerci1");
-    FILE *data_file = fopen("users100.csv","r");
+    FILE *data_file = fopen("users.csv","r");
     char buffer[200];
     int i = 0;
-
     struct user *users = NULL;
 
     if (data_file == NULL) {
         printf("Error when opening\n");
         return;
     }
-
+    //users = malloc((300000)*sizeof(struct user));
     while(fgets(buffer, 200, data_file)){
-        if (i%10000 == 0) {
-            users = realloc(users,(i+10001)*sizeof(struct user));
+        if (i%100 == 0) {
+            users = realloc(users,(i+101)*sizeof(struct user));
         }
-        users[i] = init_user(buffer);
-        i++;
-    }
 
-    for (i = 0; i < 101; i++) {
-        show_user(users[i]);
-    }
+        //verifica que leu a linha toda
+        if (buffer[strlen(buffer)-1] == '\n') {
+            users[i] = init_user(buffer);
+        }
+        else {
+            printf("linha %d demasiado comprida para processar", i);
+        }
 
+        if (users[i].id != NULL) {
+            i++;
+        }
+
+        for (int k = 0; k < i; k++) {
+            show_user(users[k]);
+        }
+
+    }
     fclose(data_file);
 }
 
