@@ -7,7 +7,7 @@ struct user {
     char *type;
     char *following_list;
     int public_gists;
-    char created_at;
+    char *created_at;
     int following;
     char *login;
 };

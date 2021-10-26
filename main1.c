@@ -7,6 +7,8 @@
 
 
 void ex1() {
+    printf("exerci1");
+    printf("exerci1");
     FILE *data_file = fopen("users100.csv","r");
     char buffer[200];
     int i = 0;
