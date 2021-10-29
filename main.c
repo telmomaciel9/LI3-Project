@@ -5,7 +5,7 @@
 
 void ex1() {
     FILE *data_file = fopen("users.csv","r");
-    char buffer[200];
+    char buffer[1000000];
     int i = 0;
     struct user *users = NULL;
 
@@ -14,7 +14,7 @@ void ex1() {
         return;
     }
     //users = malloc((300000)*sizeof(struct user));
-    while(fgets(buffer, 200, data_file)){
+    while(fgets(buffer, 1000000, data_file)){
         if (i%100 == 0) {
             users = realloc(users,(i+101)*sizeof(struct user));
         }

@@ -26,7 +26,7 @@ struct user init_user(char *info) {
         printf("%d %s %s \n",a, k.id,k.login);
     }
     else {
-        printf("deu erro%d %s\n",a, info);
+        printf("deu erro %d %s\n",a, info);
         k.id = NULL;
         //convenção de id ser NULL em caso de invalidaçao
     }
