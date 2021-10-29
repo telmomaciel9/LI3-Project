@@ -19,9 +19,6 @@ struct user init_user(char *info) {
         &k.following_list,
         &k.public_gists,
         &k.public_repos);
-//314442; mitchellshelton; User;2010-06-25 11:13:20;9;
-//[272939, 1504500, 1031373, 7852646, 11890867, 3768562, 7041191, 6673982, 4955664];9;
-//[518371, 1031373, 1504500, 2364769, 3768562, 4515014, 4955664, 6305433, 7852646];3;27
 
     if (a == 10) {
         printf("%d %s %s \n",a, k.id,k.login);
