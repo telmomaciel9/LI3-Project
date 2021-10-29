@@ -31,7 +31,7 @@ void ex1() {
         //}
         users[i] = init_user(buffer);
 
-        if (users[i].id != NULL) {
+        if (users[i].id != NULL && check_date(users[i]) && follow_confirm(users[i]))  {
             fputs(buffer,ucsv);
             i++;
         }

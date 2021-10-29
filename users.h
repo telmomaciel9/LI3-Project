@@ -5,7 +5,7 @@ struct user {
     char *type;
     char *created_at;
     int followers;
-    char *followers_list;
+    char *follower_list;
     int following;
     char *following_list;
     int public_gists;
@@ -21,12 +21,4 @@ void show_user(struct user);
 
 int check_date (struct user k);
 
-
-//6;23609;2;[5877145, 3076393];User;[];0;2008-09-08 06:37:01;0;lmanolov
-//public_repos;
-//id;
-//followers; 
-////follower_list; //type; //following_list; //public_gists;
-//created_at;
-//following;
-//login
+int follow_confirm (struct user k);

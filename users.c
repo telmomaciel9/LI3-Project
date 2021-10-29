@@ -1,7 +1,6 @@
-
+#define _XOPEN_SOURCE
 #include <stdio.h>
-#include <strptime.h>
-
+#include <time.h>
 #include "users.h"
 
 struct user init_user(char *info) {
@@ -15,7 +14,7 @@ struct user init_user(char *info) {
         &k.type,
         &k.created_at,
         &k.followers,
-        &k.followers_list,
+        &k.follower_list,
         &k.following,
         &k.following_list,
         &k.public_gists,
@@ -40,7 +39,7 @@ void show_user(struct user k){
     //        k.type, 
     //        k.created_at, 
     //        k.followers, 
-    //        k.followers_list, 
+    //        k.follower_list, 
     //        k.following, 
     //        k.following_list, 
     //        k.public_gists, 
@@ -61,50 +60,32 @@ int check_date (struct user k){
 
 
 int follow_confirm (struct user k){
-    int following_tam, follower_tam;
-
-    //[518371, 1031373, 1504500]
-
+    int following_tam, follower_tam, i;
     //comparar lista de followings
-
-    if (k.following_list[1]=="]") following_tam=0;
+    if (k.following_list[1]==']') following_tam=0;
     else following_tam=1;
 
-    for (i=0; i++;k.following_list[i]=="]"){
-        if (k.following_list[i]==",") following_tam++;
+    for (i=0; i++;k.following_list[i]==']'){
+        if (k.following_list[i]==',') following_tam++;
     }
 
     //comparar lista de followers
-
-    if (k.follower_list[1]=="]") follower_tam=0;
+    if (k.follower_list[1]==']') follower_tam=0;
     else follower_tam=1;
 
-    for (i=0; i++;k.follower_list[i]=="]"){
-        if (k.follower_list[i]==",") follower_tam++;
+    for (i=0; i++;k.follower_list[i]==']'){
+        if (k.follower_list[i]==',') follower_tam++;
     }
 
-
     //compara o tamanho das listas com o valor dado
-
-    if (follower_tam == followers) {
-        if (following_tam == following) return 1;
+    if (follower_tam == k.followers) {
+        if (following_tam == k.following) return 1;
     }
 
     return 0;
 }
 
 
-
-int check_date (struct user k){
-    struct tm time = {0};
-    
-
-    if(strptime(k.created_at, "%Y-%m-%d %H:%M:%S",&time) == NULL)
-        return 0;
-    else
-        return (time.tm_year*365 + time.tm_mon*30 + time.tm_mday < 731954);
-
-}
 
 
 //6611157;lorraine94588;User;2014-02-07 01:01:35;0;[];0;[];0;0
