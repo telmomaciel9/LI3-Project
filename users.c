@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <strptime.h>
 
 #include "users.h"
 
@@ -19,9 +20,6 @@ struct user init_user(char *info) {
         &k.following_list,
         &k.public_gists,
         &k.public_repos);
-//314442; mitchellshelton; User;2010-06-25 11:13:20;9;
-//9;[272939, 1504500, 1031373, 7852646, 11890867, 3768562, 7041191, 6673982, 4955664];9;
-//[518371, 1031373, 1504500, 2364769, 3768562, 4515014, 4955664, 6305433, 7852646];3;27;
 
     if (a == 10) {
         printf("%d %s %s \n",a, k.id,k.login);
@@ -48,6 +46,8 @@ void show_user(struct user k){
     //        k.public_gists, 
     //        k.public_repos);
 }
+    
+
 
 
 int follow_confirm (struct user k){
@@ -94,3 +94,17 @@ int follow_confirm (struct user k){
 //char *following_list;
 //int public_gists;
 //int public_repos;
+
+
+
+int check_date (struct user k){
+    struct tm time = {0};
+    
+
+    if(strptime(k.created_at, "%Y-%m-%d %H:%M:%S",&time) == NULL)
+        return 0;
+    else
+        return (time.tm_year*365 + time.tm_mon*30 + time.tm_mday < 731954);
+
+}
+
