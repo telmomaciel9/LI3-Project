@@ -49,11 +49,14 @@ void show_user(struct user k){
 
 int check_date (struct user k){
     struct tm time = {0};
-
+    int ndias;
+    int atual = l
     if(strptime(k.created_at, "%Y-%m-%d %H:%M:%S",&time) == NULL)
         return 0;
-    else
-        return (time.tm_year*365 + time.tm_mon*30 + time.tm_mday < 731954);
+    else {
+        ndias =  time.tm_year*365 + time.tm_mon*30 + time.tm_mday;
+        return (ndias > 731954) && (ndias < atual);
+    }
 
 }
 

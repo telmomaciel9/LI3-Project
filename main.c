@@ -21,7 +21,6 @@ void ex1() {
         if (i%1000 == 0) {
             users = realloc(users,(i+1001)*sizeof(struct user));
         }
-
         //verifica que leu a linha toda
         //if (buffer[strlen(buffer)-1] == '\n') {
         //    users[i] = init_user(buffer);
