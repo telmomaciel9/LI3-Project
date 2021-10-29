@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <strptime.h>
 
 #include "users.h"
 
@@ -47,6 +48,8 @@ void show_user(struct user k){
     //        k.public_gists, 
     //        k.public_repos);
 }
+    
+
 
 //6611157;lorraine94588;User;2014-02-07 01:01:35;0;[];0;[];0;0
 //char *id;
@@ -59,3 +62,37 @@ void show_user(struct user k){
 //char *following_list;
 //int public_gists;
 //int public_repos;
+
+
+//Verifica as datas
+//Não pode ser uma data inferior a 2005-04-07 
+//Não pode ser superior à data atual
+
+//Verificar ano, mes, dia, horas, segundos ......
+
+int check_date (struct user k){
+    struct tm time = {0};
+    
+
+    if(strptime(k.created_at, "%Y-%m-%d %H:%M:%S",&time) == NULL)
+        return 0;
+    else
+        return (time.tm_year*365 + time.tm_mon*30 + time.tm_mday < 731954);
+
+}
+
+
+#indlude <time.h>
+
+int main(int argc, char const *argv[]){
+    char *date = "2014-02-07 01:01:35";
+    printf("original date: %s\n",date);
+
+    struct tm time = {0};
+    
+
+    printf("%d\n", time.tm_year+1980);
+    printf("%d\n",time.tm_mday);
+
+    return 0;
+}
