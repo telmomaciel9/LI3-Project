@@ -78,18 +78,3 @@ int check_date (struct user k){
 
 }
 
-
-#indlude <time.h>
-
-int main(int argc, char const *argv[]){
-    char *date = "2014-02-07 01:01:35";
-    printf("original date: %s\n",date);
-
-    struct tm time = {0};
-    
-
-    printf("%d\n", time.tm_year+1980);
-    printf("%d\n",time.tm_mday);
-
-    return 0;
-}
