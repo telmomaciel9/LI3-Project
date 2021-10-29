@@ -19,6 +19,8 @@ struct user init_user(char *info);
 
 void show_user(struct user);
 
+int check_date (struct user k);
+
 
 //6;23609;2;[5877145, 3076393];User;[];0;2008-09-08 06:37:01;0;lmanolov
 //public_repos;
