@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include "users.h"
+#include "commits.h"
+#include "repos.h"
 
 void ex1() {
     FILE *data_file = fopen("users.csv","r");
@@ -43,6 +45,7 @@ void ex1() {
 
     fclose(ucsv);
     fclose(data_file);
+
 }
 
 
