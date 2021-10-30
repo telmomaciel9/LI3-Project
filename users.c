@@ -48,19 +48,25 @@ void show_user(struct user k){
     
 
 int check_date (struct user k){
-    struct tm time = {0};
-    struct tm* local;
+    struct tm timet = {0};
+    struct tm *local;
     time_t mytime;
-    local = ctime(&mytime);
+    //local = ctime(&mytime);
+    time(&mytime);
+    local = localtime(&mytime);
     int ndias;
-    int atual = local->tm_year*365 + local->tm_mon*30 + local->tm_mday; 
-    if(strptime(k.created_at, "%Y-%m-%d %H:%M:%S",&time) == NULL)
+    int atual = (local->tm_year+1900)*365 + local->tm_mon*30 + local->tm_mday; 
+    //printf("atual :%d  ano:%d  mes:%d  dia:%d\n",atual,local->tm_year,local->tm_mon,local->tm_mday);
+    if(strptime(k.created_at, "%Y-%m-%d %H:%M:%S",&timet) == NULL)
         return 0;
     else {
-        ndias =  time.tm_year*365 + time.tm_mon*30 + time.tm_mday;
+
+        ndias =  (timet.tm_year+1900)*365 + timet.tm_mon*30 + timet.tm_mday;
+
+        //printf("tempo input atual :%d  ano:%d  mes:%d  dia:%d %s\n",ndias,timet.tm_year+1900,timet.tm_mon,timet.tm_mday,k.created_at);
+        //printf("valido: %d ndias:%d 2005: 731954 atual:%d\n",(ndias > 731954) && (ndias < atual),ndias, atual);
         return (ndias > 731954) && (ndias < atual);
     }
-
 }
 
 
@@ -68,39 +74,43 @@ int check_date (struct user k){
 int follow_confirm (struct user k){
     int following_tam, follower_tam, i;
     //comparar lista de followings
-    if (k.following_list[1]==']') following_tam=0;
-    else following_tam=1;
-
-    for (i=0; i++;k.following_list[i]==']'){
-        if (k.following_list[i]==',') following_tam++;
+    if (k.following_list[1]==']') {
+        following_tam = 0;
+    }
+    else {
+        following_tam = 1;
     }
 
+    for (i=0; k.following_list[i] != ']';i++ ){
+        if (k.following_list[i]==',') {
+            following_tam++;
+        }
+    }
     //comparar lista de followers
-    if (k.follower_list[1]==']') follower_tam=0;
-    else follower_tam=1;
-
-    for (i=0; i++;k.follower_list[i]==']'){
-        if (k.follower_list[i]==',') follower_tam++;
+    if (k.follower_list[1]==']') {
+        follower_tam = 0;
     }
-
+    else { 
+        follower_tam = 1;
+    }
+    for (i=0; k.follower_list[i] != ']'; i++){
+        if (k.follower_list[i] == ',') {
+            follower_tam++;
+        }
+    }
     //compara o tamanho das listas com o valor dado
-    if (follower_tam == k.followers) {
-        if (following_tam == k.following) return 1;
-    }
+    printf("followint_tam:%d %d lista:%s\n", following_tam, k.following, k.following_list);
+    printf("follower_tam:%d %d lista:%s\n", follower_tam, k.followers, k.follower_list);
 
-    return 0;
+    return ((follower_tam == k.followers) && (following_tam == k.following));
 }
-
-
-
-
 //6611157;lorraine94588;User;2014-02-07 01:01:35;0;[];0;[];0;0
 //char *id;
 //char *login;
 //char *type;
 //char *created_at;
 //int followers;
-//char *followers_list;
+//char *follower_list;
 //int following;
 //char *following_list;
 //int public_gists;
