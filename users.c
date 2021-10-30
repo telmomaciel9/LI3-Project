@@ -49,8 +49,11 @@ void show_user(struct user k){
 
 int check_date (struct user k){
     struct tm time = {0};
+    struct tm* local;
+    time_t mytime;
+    local = ctime(&mytime);
     int ndias;
-    int atual = l
+    int atual = local->tm_year*365 + local->tm_mon*30 + local->tm_mday; 
     if(strptime(k.created_at, "%Y-%m-%d %H:%M:%S",&time) == NULL)
         return 0;
     else {
