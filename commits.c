@@ -16,7 +16,7 @@ struct commit init_commit(char *info) {
         &k.message);
 
     if (a == 5) {
-        printf("%d %s %s \n",a, k.repo_id,k.author_id);
+        printf("%d %d %d \n",a, k.repo_id, k.author_id);
     }
     else {
         printf("deu erro %d %s\n",a, info);
@@ -27,7 +27,15 @@ struct commit init_commit(char *info) {
 }
 
 void show_commit(struct commit k){
-    //ss
+    /*
+    printf("\n");
+    printf("rep_i : %d aut_i: %d com_id: %d com_at: %s m: %s ", 
+        &k.repo_id,
+        &k.author_id,
+        &k.committer_id,
+        &k.commit_at,
+        &k.message);
+    */
 }
 
 

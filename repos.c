@@ -26,7 +26,7 @@ struct repos init_repos(char *info) {
         &k.size);
 
     if (a == 14) {
-        printf("%d %s %s \n",a, k.id,k.owner_id);
+        printf("%d %d %d \n",a, k.id,k.owner_id);
     }
     else {
         printf("deu erro %d %s\n",a, info);
@@ -37,7 +37,24 @@ struct repos init_repos(char *info) {
 }
 
 void show_repos(struct repos k){
-    //ss
+    /*
+    printf("\n");
+    printf("i : %d own_i: %d fn: %s lc: %s hw: %s d: %s lg: %s db: %s ca: %s ua: %s fc: %d oi: %d sc: %d s: %d", 
+        &k.id,
+        &k.owner_id,
+        &k.full_name,
+        &k.license,
+        &k.has_wiki,
+        &k.description,
+        &k.language,
+        &k.default_branch,
+        &k.created_at,
+        &k.updated_at,
+        &k.forks_count,
+        &k.open_issues,
+        &k.stargazers_count,
+        &k.size);
+    */
 }
 
 
