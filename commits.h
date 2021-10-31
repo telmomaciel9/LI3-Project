@@ -1,5 +1,5 @@
 
-struct commit {
+struct commits {
     char *repo_id;
     char *author_id;
     char *committer_id;
@@ -10,9 +10,9 @@ struct commit {
 //repo_id;author_id;committer_id;commit_at;message
 
 
-struct commit init_commit(char *info);
+struct commits init_commits(char *info);
 
 
-void show_commit(struct commit);
+void show_commits(struct commits);
 
-int check_datecommits (struct commit k);
+int check_datecommits (struct commits k);

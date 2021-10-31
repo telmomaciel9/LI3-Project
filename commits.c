@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include "commits.h"
 
-struct commit init_commit(char *info) {
+struct commits init_commits(char *info) {
     //printf("chegou até aqui");
-    struct commit k;
+    struct commits k;
     //repo_id;author_id;committer_id;commit_at;message
     int a = sscanf(info,"%m[0-9];%m[0-9];%m[0-9];%m[\\-0-9 :];%m[^;]",
         &k.repo_id,
@@ -26,7 +26,7 @@ struct commit init_commit(char *info) {
     return k;
 }
 
-void show_commit(struct commit k){
+void show_commits(struct commits k){
     /*
     printf("\n");
     printf("rep_i : %d aut_i: %d com_id: %d com_at: %s m: %s ", 
@@ -39,7 +39,7 @@ void show_commit(struct commit k){
 }
 
 
-int check_datecommits (struct commit k){
+int check_datecommits (struct commits k){
     struct tm timet = {0};
 
     if(strptime(k.commit_at, "%Y-%m-%d %H:%M:%S",&timet) == NULL)
