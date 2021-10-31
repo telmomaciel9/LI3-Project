@@ -25,11 +25,9 @@ void ex1() {
         }
         //verifica que leu a linha toda
         //if (buffer[strlen(buffer)-1] == '\n') {
-        //    users[i] = init_user(buffer);
-        //}
+        //    users[i] = init_user(buffer);}
         //else {
-        //    printf("linha %d demasiado comprida para processar", i);
-        //}
+        //    printf("linha %d demasiado comprida para processar", i);}
         users[i] = init_user(buffer);
 
         if (users[i].id != NULL && check_date(users[i]) && follow_confirm(users[i]))  {

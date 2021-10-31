@@ -8,7 +8,7 @@ struct commit init_commit(char *info) {
     //printf("chegou até aqui");
     struct commit k;
     //repo_id;author_id;committer_id;commit_at;message
-    int a = sscanf(info,"%d; %d; %d; %m[\\-0-9 :]; %m[^;]",
+    int a = sscanf(info,"%m[0-9];%m[0-9];%m[0-9];%m[\\-0-9 :];%m[^;]",
         &k.repo_id,
         &k.author_id,
         &k.committer_id,
@@ -16,7 +16,7 @@ struct commit init_commit(char *info) {
         &k.message);
 
     if (a == 5) {
-        printf("%d %d %d \n",a, k.repo_id, k.author_id);
+        printf("%d %s %s \n",a, k.repo_id, k.author_id);
     }
     else {
         printf("deu erro %d %s\n",a, info);

@@ -1,6 +1,6 @@
 struct repos {
-    int id;
-    int owner_id;
+    char *id;
+    char *owner_id;
     char *full_name;
     char *license;
     char *has_wiki;

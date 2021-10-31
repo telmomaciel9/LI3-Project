@@ -1,8 +1,8 @@
 
 struct commit {
-    int repo_id;
-    int author_id;
-    int committer_id;
+    char *repo_id;
+    char *author_id;
+    char *committer_id;
     char *commit_at;
     char *message;
 };

@@ -21,30 +21,31 @@ struct user init_user(char *info) {
         &k.public_gists,
         &k.public_repos);
 
-    if (a == 10) {
-        printf("%d %s %s \n",a, k.id,k.login);
-    }
-    else {
-        printf("deu erro %d %s\n",a, info);
+    if (a != 10) {
         k.id = NULL;
-        //convenção de id ser NULL em caso de invalidaçao
+    //    printf("%d %s %s \n",a, k.id,k.login);
     }
+    //else {
+    //    printf("deu erro %d %s\n",a, info);
+    //    k.id = NULL;
+    //CONVEÇAO de id ser NULL em caso de invalidaçao
+    //}
     return k;
 }
 
 void show_user(struct user k){
     ////printf("\n");
-    //printf("i: %s l: %s t: %s ca: %s f: %d fl: %s flo:%d fol: %s pg: %d pr: %d", 
-    //        k.id, 
-    //        k.login, 
-    //        k.type, 
-    //        k.created_at, 
-    //        k.followers, 
-    //        k.follower_list, 
-    //        k.following, 
-    //        k.following_list, 
-    //        k.public_gists, 
-    //        k.public_repos);
+    printf("i: %s l: %s t: %s ca: %s f: %d fl: %s flo:%d fol: %s pg: %d pr: %d\n", 
+            k.id, 
+            k.login, 
+            k.type, 
+            k.created_at, 
+            k.followers, 
+            k.follower_list, 
+            k.following, 
+            k.following_list, 
+            k.public_gists, 
+            k.public_repos);
 }
     
 
