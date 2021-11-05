@@ -15,36 +15,38 @@ struct commits init_commits(char *info) {
         &k.commit_at,
         &k.message);
 
-    if (a == 5) {
-        printf("%d %s %s \n",a, k.repo_id, k.author_id);
-    }
-    else {
-        printf("deu erro %d %s\n",a, info);
+    if (a != 5) {
         k.repo_id = NULL;
-        //convenção de repo_id ser NULL em caso de invalidaçao
+        //printf("deu erro %d %s\n",a, info);
+        //printf("%d %s %s \n",a, k.repo_id, k.author_id);
     }
+    //else {
+    //    printf("deu erro %d %s\n",a, info);
+    //    k.repo_id = NULL;
+    //    //convenção de repo_id ser NULL em caso de invalidaçao
+    //}
     return k;
 }
 
 void show_commits(struct commits k){
-    /*
-    printf("\n");
-    printf("rep_i : %d aut_i: %d com_id: %d com_at: %s m: %s ", 
-        &k.repo_id,
-        &k.author_id,
-        &k.committer_id,
-        &k.commit_at,
-        &k.message);
-    */
+    if (k.repo_id != NULL) {
+        printf("rep_i : %s aut_i: %s com_id: %s com_at: %s m: %s\n", 
+            k.repo_id,
+            k.author_id,
+            k.committer_id,
+            k.commit_at,
+            k.message);
+    }
 }
 
 
 int check_datecommits (struct commits k){
     struct tm timet = {0};
-
-    if(strptime(k.commit_at, "%Y-%m-%d %H:%M:%S",&timet) == NULL)
+    if(strptime(k.commit_at, "%Y-%m-%d %H:%M:%S",&timet) == NULL) {
         return 0;
-    else {
-        return 1;
     }
+    return 1;
+
+
+
 }
