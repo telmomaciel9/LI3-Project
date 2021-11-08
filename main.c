@@ -84,12 +84,6 @@ void ex1() {
     //for (int k = 0; k < i; k++) {
     //    show_user(users[k]);
     //}
-    //for (int k = 0; k < h; k++) {
-    //    show_repos(repos[k]);
-    //}
-    //for (int k = 0; k < j; k++) {
-    //    show_commits(commits[k]);
-    //}
 
     fclose(ucsv);
     fclose(ucsv2);
@@ -140,6 +134,7 @@ void ex2(){
         users[uc] = init_user(buffer);
         uc++;
     }
+
     sort_users(users, uc);
 
     //commits
@@ -161,11 +156,11 @@ void ex2(){
     }
 
 
-    show_user(users[100]);
-    show_user(users[200]);
-    swap_user(&users[100],&users[200]);
-    show_user(users[100]);
-    show_user(users[200]);
+    //show_user(users[100]);
+    //show_user(users[200]);
+    //swap_user(&users[100],&users[200]);
+    //show_user(users[100]);
+    //show_user(users[200]);
 
     fclose(data_fileu);
     fclose(data_filec);

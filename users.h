@@ -23,7 +23,9 @@ void swap_user( struct user *a,struct user *b);
 
 void sort_users( struct user *a, int n);
 
-int pmenor ( struct user *u, int i, int n);
+int pmenor ( struct user *u,int i, int n);
+
+int procura_user(struct user *u, int id, int n, int k);
 
 int valid_user(char *line);
 int valid_date(char *date);

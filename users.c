@@ -5,20 +5,39 @@
 #include <stdlib.h>
 #include "users.h"
 
-int pmenor ( struct user *u, int i, int n) {
-    if ( i == n ) return 1;
-    int rc = pmenor ( u, i+1,n);
-    int va = atoi((u[i]).id);
-    int vm = atoi((u[rc]).id);
-    return va < vm ? i : rc;
+int procura_user(struct user *u, int id, int n, int k) {
+    int vm = atoi(u[k].id);
+    if (vm == id) return 1;
+    if (vm >  id) return procura_user(u,id, k , k - k/2);
+    if (vm <  id) return procura_user(u,id, n , k + k/2);
+    if (n  ==  k) return 0;
+}
+
+int pmenor(struct user *u,int i , int n) {
+    //if ( i == (n-1) ) return 1;
+    //int rc = pmenor ( u, i+1,n);
+    //int va = atoi((u[i ]).id);
+    //int vm = atoi((u[rc]).id);
+    //return va < vm ? i : rc;
+    int va, midx = 0;
+    int mv = atoi((u[midx]).id);
+    for ( ; i < n; i++) {
+        va = atoi((u[i ]).id);
+        if (va < mv) {
+            mv = va;
+            midx = i;
+        }
+    }
+    return midx;
 } 
 
+
 //selection sort
-void sort_users( struct user *u, int n) {
+void sort_users(struct user *u, int n) {
     int im;
     int i;        
     for (i = 0; i < n; i++) {
-        im = pmenor (u, i, n);
+        im = pmenor (u,i, n);
         swap_user(&u[i],&u[im]);
     }
 }
